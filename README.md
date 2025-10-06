@@ -1,1 +1,1 @@
-# reservation-app
+# Sample Reservation Service
