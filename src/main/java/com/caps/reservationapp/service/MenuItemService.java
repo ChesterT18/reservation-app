@@ -1,17 +1,16 @@
 package com.caps.reservationapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import com.caps.reservationapp.entity.MenuItem;
-
+import org.modelmapper.ModelMapper;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import org.modelmapper.ModelMapper;
-import com.caps.reservationapp.repository.MenuItemRepo;
-import com.caps.reservationapp.response.MenuItemResponse;
-
 import jakarta.transaction.Transactional;
+
+import com.caps.reservationapp.entity.MenuItem;
+import com.caps.reservationapp.response.MenuItemDto;
+import com.caps.reservationapp.repository.MenuItemRepo;
 
 @Transactional
 public class MenuItemService {
@@ -22,17 +21,23 @@ public class MenuItemService {
   @Autowired
   private ModelMapper mapper;
 
-  public MenuItemResponse getMenuItemById(int id) {
+  public Optional<MenuItemDto> getMenuItemById(UUID id) {
     Optional<MenuItem> menuItem = menuItemRepo.findById(id);
-    MenuItemResponse menuItemResponse = mapper.map(menuItem, MenuItemResponse.class);
-    return menuItemResponse;
+    if (menuItem.isEmpty()) {
+      return Optional.empty();
+    }
+    MenuItemDto menuItemDto = mapper.map(menuItem, MenuItemDto.class);
+    return Optional.of(menuItemDto);
   }
 
-  public List<MenuItemResponse> getAllMenuItems() {
-    List<MenuItem> menu = menuItemRepo.findAll();
-    List<MenuItemResponse> menuResponse = new ArrayList<MenuItemResponse>();
-    menu.forEach(m -> menuResponse.add(mapper.map(m, MenuItemResponse.class)));
-    return menuResponse;
+  public List<MenuItemDto> getAllMenuItems() {
+    List<MenuItemDto> menuItemsDto = new ArrayList<MenuItemDto>();
+    List<MenuItem> menuItems = menuItemRepo.findAll();
+    if (menuItems.isEmpty()) {
+      return menuItemsDto;
+    }
+    menuItems.forEach(m -> menuItemsDto.add(mapper.map(m, MenuItemDto.class)));
+    return menuItemsDto;
   }
 
 }

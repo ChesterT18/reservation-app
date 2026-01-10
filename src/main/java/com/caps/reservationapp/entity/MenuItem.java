@@ -1,6 +1,7 @@
 package com.caps.reservationapp.entity;
 
 import java.io.Serializable;
+import java.util.UUID;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,21 +11,24 @@ import lombok.Data;
 public class MenuItem implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name = "id")
-  private Integer id;
+  private UUID id;
 
   @Column(name = "name")
   private String name;
 
-  @Column(name = "meal_time")
-  private String mealTime;
+  @Column(name = "description")
+  private String description;
 
   @Column(name = "category")
   private String category;
 
   @Column(name = "price")
   private Double price;
+
+  @Column(name = "img_url")
+  private String imgUrl;
 
   @Column(name = "no_of_reviews")
   private Integer noOfReviews;

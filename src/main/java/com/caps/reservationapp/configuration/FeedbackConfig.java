@@ -2,14 +2,14 @@ package com.caps.reservationapp.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.caps.reservationapp.service.MenuItemService;
+import com.caps.reservationapp.service.FeedbackService;
 
 @Configuration
-public class MenuItemConfig {
+public class FeedbackConfig {
   
   @Bean
-  public MenuItemService menuItemServiceBean() {
-    return new MenuItemService();
+  public FeedbackService feedbackServiceBean() {
+    return new FeedbackService();
   }
 
 }

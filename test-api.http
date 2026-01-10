@@ -1,1 +1,41 @@
+###
 GET http://localhost:7000/menu
+
+###
+GET http://localhost:7000/user/cjtantoco18@gmail.com/ceejay18
+
+###
+
+GET http://localhost:7000/tables/000eca52-a4e5-463a-a446-9fe14a168732
+
+###
+GET http://localhost:7000/reservations
+
+###
+GET http://localhost:7000/times/available?date=2026-01-09&tableId=000eca52-a4e5-463a-a446-9fe14a168732
+
+###
+PUT http://localhost:7000/reservations/9fc1adba-48f7-45f9-b371-d0624e381ac0
+content-type: application/json
+
+{
+  "id": "9fc1adba-48f7-45f9-b371-d0624e381ac0",
+  "userId": "30f22513-0c4d-4a93-a7f0-46b1f4f0bb73",
+  "tableIds": ["000eca52-a4e5-463a-a446-9fe14a168732"],
+  "orders": [
+    {
+      "foodId": "48e37335-4136-4b37-879d-222a1f47c49a",
+      "foodName": "Glazed Bacon Pizza Americana",
+      "singleAmount": 1419,
+      "number": 1,
+      "instructions": "qwerty"
+    }
+  ],
+  "date": "2026-01-10",
+  "startTime": "12:00",
+  "endTime": "13:00",
+  "pax": 2,
+  "notes": "1234567890"
+}
+
+
