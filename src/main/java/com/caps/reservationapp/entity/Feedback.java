@@ -48,6 +48,15 @@ public class Feedback implements Serializable {
   @Column(name = "cleanliness_comment")
   private String cleanlinessComment;
 
+  @Column(name = "value_for_money_rating")
+  private Integer valueForMoneyRating;
+
+  @Column(name = "value_for_money_comment")
+  private String valueForMoneyComment;
+
+  @Column(name = "overall_rating")
+  private String overallRating;
+
   @Column(name = "general_feedback")
   private String generalFeedback;
 

@@ -94,7 +94,9 @@ public class ReservationService {
     resOrderRepo.flush();
 
     List<ResOrderDto> newOrders = reservationDto.getOrders();
-    reservationDto.setStatus("active");
+    if (reservationDto.getStatus() == null || reservationDto.getStatus() == "") {
+      reservationDto.setStatus("active");
+    }
     reservationDto.setCreatedAt(originalReservation.get().getCreatedAt());
     reservationDto.setUpdatedAt(LocalDateTime.now().toString());
 
@@ -104,6 +106,7 @@ public class ReservationService {
 
     for (ResOrderDto newOrder : newOrders) {
       ResOrder resOrder = mapper.toResOrderEntity(newOrder, reservation);
+      resOrder.setId(null);
       resOrder = resOrderRepo.saveAndFlush(resOrder);
     }
 

@@ -1,8 +1,6 @@
 package com.caps.reservationapp.response;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import lombok.Data;
 
@@ -21,6 +19,9 @@ public class FeedbackDto implements Serializable {
   private String ambianceComment;
   private Integer cleanlinessRating;
   private String cleanlinessComment;
+  private Integer valueForMoneyRating;
+  private String valueForMoneyComment;
+  private Integer overallRating;
   private String generalFeedback;
   private String suggestion;
   private String recommend;

@@ -6,7 +6,7 @@ GET http://localhost:7000/user/cjtantoco18@gmail.com/ceejay18
 
 ###
 
-GET http://localhost:7000/tables/000eca52-a4e5-463a-a446-9fe14a168732
+GET http://localhost:7000/tables/times
 
 ###
 GET http://localhost:7000/reservations
